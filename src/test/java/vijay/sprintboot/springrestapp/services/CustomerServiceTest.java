@@ -109,29 +109,29 @@ public class CustomerServiceTest {
         assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
     }
 
-    @Test
-    public void patchCustomerById() throws Exception {
-
-        //given
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setFirstName("Mesut");
-
-        Customer savedCustomer = new Customer();
-        savedCustomer.setFirstName(customerDTO.getFirstName());
-        savedCustomer.setLastName("Ozil");
-        savedCustomer.setId(1l);
-
-        when(customerRespository.save(any(Customer.class))).thenReturn(savedCustomer);
-
-        //when
-        Optional<CustomerDTO> optionalSavedDTO = Optional.of(underTest.patchCustomerById(anyLong(), customerDTO));
-
-        CustomerDTO savedDto = optionalSavedDTO.get();
-        //then
-        assertEquals(customerDTO.getFirstName(), savedDto.getFirstName());
-        assertEquals(savedCustomer.getLastName(), savedDto.getLastName());
-        assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
-    }
+//    @Test
+//    public void patchCustomerById() throws Exception {
+//
+//        //given
+//        CustomerDTO customerDTO = new CustomerDTO();
+//        customerDTO.setFirstName("Mesut");
+//
+//        Customer savedCustomer = new Customer();
+//        savedCustomer.setFirstName(customerDTO.getFirstName());
+//        savedCustomer.setLastName("Ozil");
+//        savedCustomer.setId(1l);
+//
+//        when(customerRespository.save(any(Customer.class))).thenReturn(savedCustomer);
+//
+//        //when
+//        Optional<CustomerDTO> optionalSavedDTO = Optional.of(underTest.patchCustomerById(anyLong(), customerDTO));
+//
+//        CustomerDTO savedDto = optionalSavedDTO.get();
+//        //then
+//        assertEquals(customerDTO.getFirstName(), savedDto.getFirstName());
+//        assertEquals(savedCustomer.getLastName(), savedDto.getLastName());
+//        assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
+//    }
 
     @Test
     public void deleteCustomerById() throws Exception {
